@@ -1,0 +1,29 @@
+{
+  "compilerOptions": {
+    "outDir": "out",
+    "rootDir": ".",
+    "target": "es2021",
+    "module": "es2020",
+    "strict": true,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "noImplicitReturns": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "strictNullChecks": true,
+    "strictPropertyInitialization": true,
+    "noImplicitThis": true,
+    "alwaysStrict": true,
+    "allowSyntheticDefaultImports": true,
+    "baseUrl": ".",
+    "paths": {
+      "*": ["types/*"]
+    }
+  },
+  "include": [
+    "game.ts"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
+}

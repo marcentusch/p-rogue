@@ -1,0 +1,14 @@
+{
+  "name": "p-rogue",
+  "version": "1.0.0",
+  "description": "Roguelike game using only a <p> tag",
+  "main": "public/index.html",
+  "scripts": {
+    "dev": "tsc -w"
+  },
+  "author": "Marc Obel",
+  "license": "ISC",
+  "dependencies": {
+    "typescript": "^5.0.4"
+  }
+}
