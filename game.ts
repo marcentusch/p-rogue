@@ -1,9 +1,12 @@
 const gridSize = { width: 20, height: 10 };
 const player = { x: 9, y: 4 };
+const playerChar = "@";
+const floorChar = ".";
+const gameContainer = document.getElementById("game-container")!;
 
 const generate2dArray = (width: number, height: number): string[][] =>
   Array.from({ length: height }, () =>
-    Array.from({ length: width }, () => "•")
+    Array.from({ length: width }, () => floorChar)
   );
 
 const grid: string[][] = generate2dArray(gridSize.width, gridSize.height);
@@ -11,13 +14,14 @@ const grid: string[][] = generate2dArray(gridSize.width, gridSize.height);
 const renderGrid = (gameElement: HTMLElement) =>
   (gameElement.textContent = grid.map((row) => row.join("")).join("\n"));
 
+const render = () => {
+  drawPlayer(player.x, player.y);
+  renderGrid(gameContainer);
+};
+
 const draw = (x: number, y: number, char: string) => (grid[y][x] = char);
 
-const drawPlayer = (x: number, y: number) => draw(x, y, "@");
-
-const gameContainer = document.getElementById("game-container")!;
-drawPlayer(player.x, player.y);
-renderGrid(gameContainer);
+const drawPlayer = (x: number, y: number) => draw(x, y, playerChar);
 
 const movePlayer = (direction: { x: number; y: number }): void => {
   const newX = player.x + direction.x;
@@ -29,11 +33,10 @@ const movePlayer = (direction: { x: number; y: number }): void => {
     newY >= 0 &&
     newY < gridSize.height
   ) {
-    draw(player.x, player.y, "•")
+    draw(player.x, player.y, floorChar);
     player.x = newX;
     player.y = newY;
-    drawPlayer(player.x, player.y);
-    renderGrid(gameContainer);
+    render();
   }
 };
 
@@ -48,3 +51,5 @@ document.addEventListener("keydown", (event: KeyboardEvent): void => {
 
   if (directions.hasOwnProperty(key)) movePlayer(directions[key]);
 });
+
+render();
